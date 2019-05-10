@@ -571,3 +571,42 @@ zillow_historical_data <- full_join(zillow_historical_data, edited_fips_codes, b
 # so that it may be accessed and used by the app
 
 write_rds(zillow_historical_data, path = "zillow-data-explorer-app/zillow_historical_data.rds")
+
+# Read in the csv file for year over year percent change in ZHVI forecasts at
+# the city, county, and state levels from the Zillow website
+
+zillow_home_value_forecast_data <- read_csv(url("http://files.zillowstatic.com/research/public/AllRegionsForePublic.csv"), 
+                                            col_types = cols(CityName = col_character())) %>% 
+  
+  # Use the "clean_names" function from the "janitor" package to pretty the
+  # column names
+  
+  clean_names()
+
+# Perform data cleaning on the forecasts data
+
+zillow_home_value_forecast_data <- zillow_home_value_forecast_data %>% 
+  
+  # Rename the "state_name" variable so that the naming format matches that of
+  # the "zillow_historical_data" dataframe
+  
+  rename(state = state_name) %>% 
+  
+  # Modify the "region_name" variable so that when "region" is either "County"
+  # or "City", it becomes the "region_name" variable with the "state" variable
+  # pasted onto it (for example, "Los Angeles County, CA"), and when it is
+  # "State", it remains as it was; this format matches the "county_name,"
+  # "city_name," and "state_name" variables frome the "zillow_historical_data"
+  # dataframe, respectively
+  
+  mutate(region_name = case_when(region %in% c("County", "City") ~ paste(region_name, state, sep = ", "), 
+                                 TRUE ~ region_name)) %>% 
+  
+  # Deselect the variables that are no longer needed
+  
+  select(-c(state, county_name, city_name))
+
+# Write the "zillow_home_value_forecast_data" dataframe to an rds file in the
+# app folder so that it may be accessed and used by the app
+
+write_rds(zillow_home_value_forecast_data, path = "zillow-data-explorer-app/zillow_home_value_forecast_data.rds")

@@ -610,3 +610,57 @@ zillow_home_value_forecast_data <- zillow_home_value_forecast_data %>%
 # app folder so that it may be accessed and used by the app
 
 write_rds(zillow_home_value_forecast_data, path = "zillow-data-explorer-app/zillow_home_value_forecast_data.rds")
+
+
+# Create a dataframe to be used for the forecast leaflet maps by county
+
+county_forecast_data <- zillow_home_value_forecast_data %>% 
+  
+  # Filter the data to keep only observations for which the value of "region" is
+  # "County"
+  
+  filter(region == "County") %>% 
+  
+  # Rename the "region_name" variable to "county_name" so that the naming format
+  # matches that of the "zillow_historical_data" dataframe
+  
+  rename(county_name = region_name) %>% 
+  
+  # Deselect the variables that are no longer needed
+  
+  select(-region)
+
+# Create a dataframe called "county_forecast_map_data" by performing a full_join
+# on the "county_forecast_data" and "edited_fips_codes" dataframes; doing so
+# will allow the dataframe to be joined with county shapefiles for the forecast
+# leaflet map by county
+
+county_forecast_map_data <- full_join(county_forecast_data, edited_fips_codes, by = "county_name")
+
+# Write the "county_forecast_map_data" dataframe to an rds file in the app
+# folder so that it may be accessed and used by the app
+
+write_rds(county_forecast_map_data, path = "zillow-data-explorer-app/county_forecast_map_data.rds")
+
+# Create a dataframe to be used for the forecast leaflet maps by state
+
+state_forecast_map_data <- zillow_home_value_forecast_data %>% 
+  
+  # Filter the data to keep only observations for which the value of "region" is
+  # "State"
+  
+  filter(region == "State") %>%
+  
+  # Rename the "region_name" variable to "state_name" so that the naming format
+  # matches that of the "zillow_historical_data" dataframe
+  
+  rename(state_name = region_name) %>% 
+  
+  # Deselect the variables that are no longer needed
+  
+  select(-region)
+
+# Write the "state_forecast_map_data" dataframe to an rds file in the app folder
+# so that it may be accessed and used by the app
+
+write_rds(state_forecast_map_data, path = "zillow-data-explorer-app/state_forecast_map_data.rds")

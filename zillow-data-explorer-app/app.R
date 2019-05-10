@@ -129,9 +129,10 @@ ui <- fluidPage(
 
               p(helpText('Median Zillow Home Value Index: "A smoothed, seasonally adjusted measure of the median estimated home value across a given region and housing type."  Here, the housing type is all homes.')),
               p(helpText('Median Value per Square Foot: "Median of the value of all homes per square foot. This number is calculated by taking the estimated home value for each home in a given region and dividing it by the home’s square footage."')),
-              p(helpText('Percentage of Homes that Increased in Value: "The percentage of homes in an given region with values that have increased in the past year."')),
-              p(helpText('Percentage of Homes that Decreased in Value: "The percentage of homes in an given region with values that have decreased in the past year."')),
+              p(helpText('Percentage of Homes that Increased in Value: "The percentage of homes in [a] given region with values that have increased in the past year."')),
+              p(helpText('Percentage of Homes that Decreased in Value: "The percentage of homes in [a] given region with values that have decreased in the past year."')),
               p(helpText('"All homes" includes "single-family, condominium and co-operative homes with a county record."')),
+              p(helpText("If the geographical unit is anything other than zip code, each area's value for each metric corresponds to the median value of that metric across zip codes within area.")), 
               p(helpText(
                 "Variable descriptions courtesy of ",
                 a('"Zillow Research."', href = "https://www.zillow.com/research/data/")
@@ -230,9 +231,10 @@ ui <- fluidPage(
               p(helpText("Here, you can examine Zillow's historical data for various metrics at the zip code, city, county, and state levels.  Compare trends for various zip codes, cities, counties, or states by picking areas to display.")),
               p(helpText('Median Zillow Home Value Index: "A smoothed, seasonally adjusted measure of the median estimated home value across a given region and housing type."  Here, the housing type is all homes.')),
               p(helpText('Median Value per Square Foot: "Median of the value of all homes per square foot. This number is calculated by taking the estimated home value for each home in a given region and dividing it by the home’s square footage."')),
-              p(helpText('Percentage of Homes that Increased in Value: "The percentage of homes in an given region with values that have increased in the past year."')),
-              p(helpText('Percentage of Homes that Decreased in Value: "The percentage of homes in an given region with values that have decreased in the past year."')),
+              p(helpText('Percentage of Homes that Increased in Value: "The percentage of homes in [a] given region with values that have increased in the past year."')),
+              p(helpText('Percentage of Homes that Decreased in Value: "The percentage of homes in [a] given region with values that have decreased in the past year."')),
               p(helpText('"All homes" includes "single-family, condominium and co-operative homes with a county record."')),
+              p(helpText("If the geographical unit is anything other than zip code, each area's value for each metric corresponds to the median value of that metric across zip codes within area.")), 
               p(helpText(
                 "Variable descriptions courtesy of ",
                 a('"Zillow Research."', href = "https://www.zillow.com/research/data/")

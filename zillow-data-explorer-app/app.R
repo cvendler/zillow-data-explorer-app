@@ -276,7 +276,7 @@ ui <- fluidPage(
                 options = list(placeholder = "Click to search")
               ),
 
-              p(helpText("Here, you can examine Zillow's forecast data at the zip code, city, county, and state levels.  Compare Zillow's Home Value Forecasts for various zip codes, cities, counties, or states by picking areas to display.")),
+              p(helpText("Here, you can examine Zillow's forecast data at the city, county, and state levels.  Compare Zillow's Home Value Forecasts for various cities, counties, or states by picking areas to display.")),
               p(helpText('Zillow Home Value Forecasts: One-year forecasts predicted in the most recent month available of the Zillow Home Value Index (a "smoothed, seasonally adjusted measure of the median estimated home value across a given region and housing type" where the housing type here is all homes).')),
               p(helpText(
                 "Variable descriptions courtesy of ",

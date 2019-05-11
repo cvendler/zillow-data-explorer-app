@@ -128,7 +128,7 @@ ui <- fluidPage(
                 max = max(zillow_historical_data$year, na.rm = TRUE)
               ),
 
-              p(helpText("Due to the size of the data and the number of shapefiles, maps may take a few minutes to load.  Hover over the areas for more information.  Thanks for your patience and enjoy!")),
+              p(helpText("Due to the size of the data and the number of shapefiles, maps may take a few minutes to load.  Please examine counties in only one map (either this one or the one in the next tab) at a time; switch back to state if you want to examine counties in the other map.  Hover over the areas for more information.  Thanks for your patience and enjoy!")),
               p(helpText('Median Zillow Home Value Index: "A smoothed, seasonally adjusted measure of the median estimated home value across a given region and housing type."  Here, the housing type is all homes.')),
               p(helpText('Median Value per Square Foot: "Median of the value of all homes per square foot. This number is calculated by taking the estimated home value for each home in a given region and dividing it by the home’s square footage."')),
               p(helpText('Percentage of Homes that Increased in Value: "The percentage of homes in [a] given region with values that have increased in the past year."')),
@@ -169,7 +169,7 @@ ui <- fluidPage(
                 selected = "state_name"
               ),
 
-              p(helpText("Due to the size of the data and the number of shapefiles, maps may take a few minutes to load.  Hover over the areas for more information.  Thanks for your patience and enjoy!")),
+              p(helpText("Due to the size of the data and the number of shapefiles, maps may take a few minutes to load.  Please examine counties in only one map (either this one or the one in the previous tab) at a time; switch back to state if you want to examine counties in the other map.  Hover over the areas for more information.  Thanks for your patience and enjoy!")),
               p(helpText('Home Value Forecasts: Mapped are Zillow\'s Home Value Forecasts, one-year forecasts predicted in the most recent month available of the Zillow Home Value Index (a "smoothed, seasonally adjusted measure of the median estimated home value across a given region and housing type" where the housing type here is all homes).')),
               p(helpText("From top to bottom in the legends, colors correspond to the 0th-5th, 5th-25th, 25th-50th, 50th-75th, 75th-95th, and 95th-100th percentiles.")),
               p(helpText(

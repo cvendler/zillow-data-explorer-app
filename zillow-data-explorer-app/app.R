@@ -70,6 +70,7 @@ ui <- fluidPage(
   # Using the "shinythemes" package, set the app's theme to "cerulean"; I choose
   # this theme because its main color is light blue, which matches Zillow's
   # logo's color quite well
+  
   theme = shinytheme("cerulean"),
 
   # Set up the ui to use shiny's "navbar" layout in which the page has a
@@ -489,6 +490,7 @@ server <- function(input, output, session) {
         setView(lng = -98.5795, lat = 39.8283, zoom = 3)
 
       # Begin if statement for "State"
+      
     } else if (input$yearly_comparisons_scope == "state_name") {
 
       # Create an object to be joined to the state shapefile data by filtering
@@ -720,6 +722,7 @@ server <- function(input, output, session) {
         setView(lng = -98.5795, lat = 39.8283, zoom = 3)
 
       # Begin if statement for "State"
+      
     } else if (input$forecasts_scope == "state_name") {
 
       # Create an object to be joined to the county shapefile data by grouping

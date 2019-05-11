@@ -128,13 +128,13 @@ ui <- fluidPage(
                 max = max(zillow_historical_data$year, na.rm = TRUE)
               ),
 
-              p(helpText("Due to the size of the data and the number of shapefiles, maps may take a few minutes to load.  Thanks for your patience and enjoy!")),
+              p(helpText("Due to the size of the data and the number of shapefiles, maps may take a few minutes to load.  Hover over the areas for more information.  Thanks for your patience and enjoy!")),
               p(helpText('Median Zillow Home Value Index: "A smoothed, seasonally adjusted measure of the median estimated home value across a given region and housing type."  Here, the housing type is all homes.')),
               p(helpText('Median Value per Square Foot: "Median of the value of all homes per square foot. This number is calculated by taking the estimated home value for each home in a given region and dividing it by the home’s square footage."')),
               p(helpText('Percentage of Homes that Increased in Value: "The percentage of homes in [a] given region with values that have increased in the past year."')),
               p(helpText('Percentage of Homes that Decreased in Value: "The percentage of homes in [a] given region with values that have decreased in the past year."')),
               p(helpText('"All homes" includes "single-family, condominium and co-operative homes with a county record."')),
-              p(helpText("If the geographical unit is anything other than zip code, each area's value for each metric corresponds to the median value of that metric across zip codes within area.")),
+              p(helpText("If the geographical unit is anything other than zip code, each area's value for each metric corresponds to the median value of that metric across zip codes within that area.")),
               p(helpText("From top to bottom in the legends, colors correspond to the 0th-5th, 5th-25th, 25th-50th, 50th-75th, 75th-95th, and 95th-100th percentiles for each metric of comparison.")),
               p(helpText(
                 "Variable descriptions courtesy of ",
@@ -169,7 +169,7 @@ ui <- fluidPage(
                 selected = "state_name"
               ),
 
-              p(helpText("Due to the size of the data and the number of shapefiles, maps may take a few minutes to load.  Thanks for your patience and enjoy!")),
+              p(helpText("Due to the size of the data and the number of shapefiles, maps may take a few minutes to load.  Hover over the areas for more information.  Thanks for your patience and enjoy!")),
               p(helpText('Home Value Forecasts: Mapped are Zillow\'s Home Value Forecasts, one-year forecasts predicted in the most recent month available of the Zillow Home Value Index (a "smoothed, seasonally adjusted measure of the median estimated home value across a given region and housing type" where the housing type here is all homes).')),
               p(helpText("From top to bottom in the legends, colors correspond to the 0th-5th, 5th-25th, 25th-50th, 50th-75th, 75th-95th, and 95th-100th percentiles.")),
               p(helpText(
@@ -233,13 +233,13 @@ ui <- fluidPage(
                 options = list(placeholder = "Click to search")
               ),
 
-              p(helpText("Here, you can examine Zillow's historical data for various metrics at the zip code, city, county, and state levels.  Compare trends for various zip codes, cities, counties, or states by picking areas to display.")),
+              p(helpText("Here, you can examine Zillow's historical data for various metrics at the zip code, city, county, and state levels.  Compare trends for various zip codes, cities, counties, or states by picking areas to display.  Hover over the lines for more information.")),
               p(helpText('Median Zillow Home Value Index: "A smoothed, seasonally adjusted measure of the median estimated home value across a given region and housing type."  Here, the housing type is all homes.')),
               p(helpText('Median Value per Square Foot: "Median of the value of all homes per square foot. This number is calculated by taking the estimated home value for each home in a given region and dividing it by the home’s square footage."')),
               p(helpText('Percentage of Homes that Increased in Value: "The percentage of homes in [a] given region with values that have increased in the past year."')),
               p(helpText('Percentage of Homes that Decreased in Value: "The percentage of homes in [a] given region with values that have decreased in the past year."')),
               p(helpText('"All homes" includes "single-family, condominium and co-operative homes with a county record."')),
-              p(helpText("If the geographical unit is anything other than zip code, each area's value for each metric corresponds to the median value of that metric across zip codes within area.")),
+              p(helpText("If the geographical unit is anything other than zip code, each area's value for each metric corresponds to the median value of that metric across zip codes within that area.")),
               p(helpText(
                 "Variable descriptions courtesy of ",
                 a('"Zillow Research."', href = "https://www.zillow.com/research/data/")
@@ -283,7 +283,7 @@ ui <- fluidPage(
                 options = list(placeholder = "Click to search")
               ),
 
-              p(helpText("Here, you can examine Zillow's forecast data at the city, county, and state levels.  Compare Zillow's Home Value Forecasts for various cities, counties, or states by picking areas to display.")),
+              p(helpText("Here, you can examine Zillow's forecast data at the city, county, and state levels.  Compare Zillow's Home Value Forecasts for various cities, counties, or states by picking areas to display.  Hover over the columns for more information.")),
               p(helpText('Zillow Home Value Forecasts: One-year forecasts predicted in the most recent month available of the Zillow Home Value Index (a "smoothed, seasonally adjusted measure of the median estimated home value across a given region and housing type" where the housing type here is all homes).')),
               p(helpText(
                 "Variable descriptions courtesy of ",

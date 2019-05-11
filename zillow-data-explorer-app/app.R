@@ -133,6 +133,7 @@ ui <- fluidPage(
               p(helpText('Percentage of Homes that Decreased in Value: "The percentage of homes in [a] given region with values that have decreased in the past year."')),
               p(helpText('"All homes" includes "single-family, condominium and co-operative homes with a county record."')),
               p(helpText("If the geographical unit is anything other than zip code, each area's value for each metric corresponds to the median value of that metric across zip codes within area.")), 
+              p(helpText("From top to bottom in the legends, colors correspond to the 0th-5th, 5th-25th, 25th-50th, 50th-75th, 75th-95th, and 95th-100th percentiles for each metric of comparison.")),
               p(helpText(
                 "Variable descriptions courtesy of ",
                 a('"Zillow Research."', href = "https://www.zillow.com/research/data/")
@@ -167,6 +168,7 @@ ui <- fluidPage(
               ),
 
               p(helpText('Home Value Forecasts: Mapped are Zillow\'s Home Value Forecasts, one-year forecasts predicted in the most recent month available of the Zillow Home Value Index (a "smoothed, seasonally adjusted measure of the median estimated home value across a given region and housing type" where the housing type here is all homes).')),
+              p(helpText("From top to bottom in the legends, colors correspond to the 0th-5th, 5th-25th, 25th-50th, 50th-75th, 75th-95th, and 95th-100th percentiles.")),
               p(helpText(
                 "Variable descriptions courtesy of ",
                 a('"Zillow Research."', href = "https://www.zillow.com/research/data/")
@@ -716,6 +718,7 @@ server <- function(input, output, session) {
         setView(lng = -98.5795, lat = 39.8283, zoom = 3)
 
       # Begin if statement for "State"
+      
     } else if (input$forecasts_scope == "state_name") {
 
       # Create an object to be joined to the county shapefile data by grouping

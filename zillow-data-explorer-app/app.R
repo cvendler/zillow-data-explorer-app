@@ -126,14 +126,14 @@ ui <- fluidPage(
                 min = min(zillow_historical_data$year, na.rm = TRUE),
                 max = max(zillow_historical_data$year, na.rm = TRUE)
               ),
-              
-              p(helpText("Due to the size of the data and the number of shapefiles, maps may take a few minutes to load.  Thanks for your patience and enjoy!")), 
+
+              p(helpText("Due to the size of the data and the number of shapefiles, maps may take a few minutes to load.  Thanks for your patience and enjoy!")),
               p(helpText('Median Zillow Home Value Index: "A smoothed, seasonally adjusted measure of the median estimated home value across a given region and housing type."  Here, the housing type is all homes.')),
               p(helpText('Median Value per Square Foot: "Median of the value of all homes per square foot. This number is calculated by taking the estimated home value for each home in a given region and dividing it by the home’s square footage."')),
               p(helpText('Percentage of Homes that Increased in Value: "The percentage of homes in [a] given region with values that have increased in the past year."')),
               p(helpText('Percentage of Homes that Decreased in Value: "The percentage of homes in [a] given region with values that have decreased in the past year."')),
               p(helpText('"All homes" includes "single-family, condominium and co-operative homes with a county record."')),
-              p(helpText("If the geographical unit is anything other than zip code, each area's value for each metric corresponds to the median value of that metric across zip codes within area.")), 
+              p(helpText("If the geographical unit is anything other than zip code, each area's value for each metric corresponds to the median value of that metric across zip codes within area.")),
               p(helpText("From top to bottom in the legends, colors correspond to the 0th-5th, 5th-25th, 25th-50th, 50th-75th, 75th-95th, and 95th-100th percentiles for each metric of comparison.")),
               p(helpText(
                 "Variable descriptions courtesy of ",
@@ -168,7 +168,7 @@ ui <- fluidPage(
                 selected = "state_name"
               ),
 
-              p(helpText("Due to the size of the data and the number of shapefiles, maps may take a few minutes to load.  Thanks for your patience and enjoy!")), 
+              p(helpText("Due to the size of the data and the number of shapefiles, maps may take a few minutes to load.  Thanks for your patience and enjoy!")),
               p(helpText('Home Value Forecasts: Mapped are Zillow\'s Home Value Forecasts, one-year forecasts predicted in the most recent month available of the Zillow Home Value Index (a "smoothed, seasonally adjusted measure of the median estimated home value across a given region and housing type" where the housing type here is all homes).')),
               p(helpText("From top to bottom in the legends, colors correspond to the 0th-5th, 5th-25th, 25th-50th, 50th-75th, 75th-95th, and 95th-100th percentiles.")),
               p(helpText(
@@ -238,7 +238,7 @@ ui <- fluidPage(
               p(helpText('Percentage of Homes that Increased in Value: "The percentage of homes in [a] given region with values that have increased in the past year."')),
               p(helpText('Percentage of Homes that Decreased in Value: "The percentage of homes in [a] given region with values that have decreased in the past year."')),
               p(helpText('"All homes" includes "single-family, condominium and co-operative homes with a county record."')),
-              p(helpText("If the geographical unit is anything other than zip code, each area's value for each metric corresponds to the median value of that metric across zip codes within area.")), 
+              p(helpText("If the geographical unit is anything other than zip code, each area's value for each metric corresponds to the median value of that metric across zip codes within area.")),
               p(helpText(
                 "Variable descriptions courtesy of ",
                 a('"Zillow Research."', href = "https://www.zillow.com/research/data/")
@@ -720,7 +720,6 @@ server <- function(input, output, session) {
         setView(lng = -98.5795, lat = 39.8283, zoom = 3)
 
       # Begin if statement for "State"
-      
     } else if (input$forecasts_scope == "state_name") {
 
       # Create an object to be joined to the county shapefile data by grouping
@@ -835,21 +834,25 @@ server <- function(input, output, session) {
   # selectInputs
 
   observeEvent(c(input$looking_back_scope, input$looking_back_y_variable), {
+
+    # Set the choices to be a sorted list of unique values in the column of
+    # "zillow_historical_data" that matches the user's choice for
+    # "looking_back_scope"; rename the first element so that the user is
+    # presented with the word "Options" followed by the list of options
+
+    choices <- arrange(
+      unique(select(
+        filter(zillow_historical_data, !is.na(get(input$looking_back_y_variable))),
+        match(input$looking_back_scope, names(zillow_historical_data))
+      )),
+      get(input$looking_back_scope)
+    ) %>%
+      rename(Options = 1)
+
     updateSelectizeInput(
       session = session,
       inputId = "looking_back_areas",
-
-      # Set the choices to be a sorted list of unique values in the column of
-      # "zillow_historical_data" that matches the user's choice for
-      # "looking_back_scope" for which the chosen y-variable is not NA
-
-      choices = arrange(
-        unique(select(
-          filter(zillow_historical_data, !is.na(get(input$looking_back_y_variable))),
-          match(input$looking_back_scope, names(zillow_historical_data))
-        )),
-        get(input$looking_back_scope)
-      )
+      choices = choices
     )
   })
 
@@ -967,15 +970,19 @@ server <- function(input, output, session) {
   # based on user choice for the "looking_forward_scope" selectInput
 
   observeEvent(input$looking_forward_scope, {
+
+    # Set the choices to be a sorted list of unique values in the column of
+    # "zillow_home_value_forecast_data" that matches the user's choice for
+    # "looking_forward_scope"; rename the first element so that the user is
+    # presented with the word "Options" followed by the list of options
+
+    choices <- arrange(unique(select(filter(zillow_home_value_forecast_data, region == input$looking_forward_scope), region_name)), region_name) %>%
+      rename(Options = 1)
+
     updateSelectizeInput(
       session = session,
       inputId = "looking_forward_areas",
-
-      # Set the choices to be a sorted list of unique values in the column of
-      # "zillow_home_value_forecast_data" that matches the user's choice for
-      # "looking_forward_scope"
-
-      choices = arrange(unique(select(filter(zillow_home_value_forecast_data, region == input$looking_forward_scope), region_name)), region_name)
+      choices = choices
     )
   })
 

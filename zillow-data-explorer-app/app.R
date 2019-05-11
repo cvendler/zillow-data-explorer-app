@@ -233,7 +233,7 @@ ui <- fluidPage(
                 options = list(placeholder = "Click to search")
               ),
 
-              p(helpText("Here, you can examine Zillow's historical data for various metrics at the zip code, city, county, and state levels.  Compare trends for various zip codes, cities, counties, or states by picking areas to display.  Hover over the lines for more information.")),
+              p(helpText('Here, you can examine Zillow\'s historical data for various metrics at the zip code, city, county, and state levels.  Compare trends for various zip codes, cities, counties, or states by picking areas to display.  Given the size of the data, it may take a few seconds for the options in "Area(s) to Display" to update.  Hover over the lines for more information.  Thanks for your patience and enjoy!')),
               p(helpText('Median Zillow Home Value Index: "A smoothed, seasonally adjusted measure of the median estimated home value across a given region and housing type."  Here, the housing type is all homes.')),
               p(helpText('Median Value per Square Foot: "Median of the value of all homes per square foot. This number is calculated by taking the estimated home value for each home in a given region and dividing it by the home’s square footage."')),
               p(helpText('Percentage of Homes that Increased in Value: "The percentage of homes in [a] given region with values that have increased in the past year."')),
@@ -283,7 +283,7 @@ ui <- fluidPage(
                 options = list(placeholder = "Click to search")
               ),
 
-              p(helpText("Here, you can examine Zillow's forecast data at the city, county, and state levels.  Compare Zillow's Home Value Forecasts for various cities, counties, or states by picking areas to display.  Hover over the points for more information.")),
+              p(helpText('Here, you can examine Zillow\'s forecast data at the city, county, and state levels.  Compare Zillow\'s Home Value Forecasts for various cities, counties, or states by picking areas to display.  Given the size of the data, it may take a few seconds for the options in "Area(s) to Display" to update.  Hover over the points for more information.  Thanks for your patience and enjoy!')),
               p(helpText('Zillow Home Value Forecasts: One-year forecasts predicted in the most recent month available of the Zillow Home Value Index (a "smoothed, seasonally adjusted measure of the median estimated home value across a given region and housing type" where the housing type here is all homes).')),
               p(helpText(
                 "Variable descriptions courtesy of ",
